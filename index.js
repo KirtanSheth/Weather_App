@@ -51,7 +51,7 @@ searchTab.addEventListener("click", () => {
 function getfromSessionStorage() {
     const localCoordinates = sessionStorage.getItem("user-coordinates");
     if(!localCoordinates) {
-        //agar local coordinates nahi mile
+        //if we dont get location 
         grantAccessContainer.classList.add("active");
     }
     else {
@@ -161,6 +161,7 @@ async function fetchSearchWeatherInfo(city) {
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
           );
         const data = await response.json();
+        console.log(data);
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
         renderWeatherInfo(data);
